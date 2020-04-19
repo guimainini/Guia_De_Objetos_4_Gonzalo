@@ -4,15 +4,15 @@ import java.util.Scanner;
 public class Main {
     static ArrayList<Movie> listMovie = new ArrayList<Movie>();
     static ArrayList<Client> listClient = new ArrayList<Client>();
-    static Rental rental = new Rental();
+    static ArrayList<Ticket> listTicket = new ArrayList<Ticket>();
 
+    static Ticket ticket = new Ticket();
 
 
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int option;
-
         boolean exit = true;
         int flag,flag2;
         String title,name,newClientName,newClientCell,newClientAddress;
@@ -22,14 +22,15 @@ public class Main {
 
 
 
-
+        //traigo las pelis y cliente creados en otras clases
         listMovie = Movie.crearPeli();
         listClient = Client.createClient();
 
+
+        //muestro clientes y pelis
         for(Movie e:listMovie){
             System.out.println(e.toString());
         }
-
         System.out.println();
         for(Client r:listClient){
             System.out.println(r.toString());
@@ -40,9 +41,9 @@ public class Main {
 
         while(exit){
 
-        System.out.println("1. Buscar pelicula y si esta en stock ");
-        System.out.println("2. Alquilar");
-        System.out.println("3.");
+        System.out.println("1. Buscar pelicula si existe y si esta en stock ");
+        System.out.println("2. Alquilar ");
+        System.out.println("3. Devolucion ");
         System.out.println("4.");
         System.out.println("5.");
         System.out.println("6.");
@@ -58,17 +59,8 @@ public class Main {
                 in.nextLine();
                 title = in.nextLine();
                 title = title.toUpperCase();
-                flag = Movie.buscarSiExiste(title);
-                if(flag != -1) {
-                    if (listMovie.get(flag).getStock() > 1) {
-                        System.out.println("Hay peliculas en stock.");
-                        System.out.println("Usted tiene en stock " + listMovie.get(flag).getStock());
-                    } else {
-                        System.out.println("No tiene en stock");
-                    }
-                }else{
-                    System.out.println("La pelicula q busca no existe");
-                }
+                String hi = Movie.cheackMovie(title);
+                System.out.println(hi);
                 break;
             case 2:
                 do {
@@ -76,17 +68,9 @@ public class Main {
                     in.nextLine();
                     title = in.nextLine();
                     title = title.toUpperCase();
-                    flag = Movie.buscarSiExiste(title);
-                    if (flag != -1) {
-                        if (listMovie.get(flag).getStock() > 1) {
-                            System.out.println("Hay peliculas en stock.");
-                            System.out.println("Usted tiene en stock " + listMovie.get(flag).getStock());
-                        } else {
-                            System.out.println("No tiene en stock");
-                        }
-                    } else {
-                        System.out.println("La pelicula q busca no existe");
-                    }
+                    String his = Movie.cheackMovie(title);
+                    System.out.println(his);
+
                     System.out.println("Desea buscar otra (s/n)");
                     option3 = in.next().charAt(0);
                 }while(option3 == 's');
@@ -95,17 +79,19 @@ public class Main {
                 in.nextLine();
                 System.out.print("Ingrese el nombre del cliente : ");
                 name = in.nextLine();
+                flag = Client.searchExistsClient(name);
 
-                flag2 = Client.searchExistsClient(name);
-                System.out.println(flag2);
-                    if(flag2 != -1){
-                        listMovie.get(flag).setStockDiscount(1);
-                        System.out.println("Hay peliculas en stock.");
-                        System.out.println("Usted tiene en stock " + listMovie.get(flag).getStock());
+                    if(flag != -1){
+                        int flag3 = Movie.posicionMovie(title);
+                        listMovie.get(flag3).setStockDiscount();
+
+                        Ticket t1 = new Ticket(name,title);
+                        listTicket.add(t1);
+                        System.out.println(t1.toString());
 
 
-                        System.out.println("\n\n\n");
-                        System.out.println(rental.toString());
+                       /* System.out.println("\n\n\n");
+                        System.out.println(ticket.toString());*/
 
 
                     }else {
@@ -126,9 +112,19 @@ public class Main {
 
                             listClient.add(s1);
                             System.out.println();
-                            for(Client r:listClient){
+
+                            //nuestro que se alla cargado el usuario nuevo
+                            for(Client r:listClient) {
                                 System.out.println(r.toString());
                             }
+
+                            //renerando el ticker del usuario
+                            int flag3 = Movie.posicionMovie(title);
+                            listMovie.get(flag3).setStockDiscount();
+
+                            Ticket t1 = new Ticket(name,title);
+                            listTicket.add(t1);
+                            System.out.println(t1.toString());
                         }
 
                     }
@@ -136,7 +132,9 @@ public class Main {
 
                 break;
             case 3:
-                    //devolucion
+
+
+
 
                 break;
             case 4:

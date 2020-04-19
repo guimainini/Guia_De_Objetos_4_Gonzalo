@@ -52,8 +52,8 @@ public class Movie {
         this.stock = stock;
     }
 
-    public void setStockDiscount(int stock) {
-        this.stock -= stock;
+    public void setStockDiscount() {
+        this.stock --;
     }
 
 
@@ -88,8 +88,27 @@ public class Movie {
         return listMovie;
     }
 
-    //buscar una peli si existe y devuelvo su ubicacion
-    static public int  buscarSiExiste (String title) {
+    //buscar una peli si existe y devuelve si o no esta
+    static public String cheackMovie (String title){
+        int exist = -1;
+        String thisMovie = "La pelicula que busca Existe";
+        int i = 0;
+        while(i < listMovie.size() && exist == -1){
+            if(listMovie.get(i).getTitle().equals(title)){
+                exist = i;
+            }
+            i++;
+        }
+        if(exist == -1){
+            thisMovie = "La pelicula que busca No Existe";
+        }else{
+            thisMovie += " y cuanta con un stock de : "+listMovie.get(exist).getStock();
+        }
+        return thisMovie;
+    }
+
+    //buscar la posicion de la peli
+    static public int  posicionMovie (String title) {
         int exist = -1;
         int i = 0;
         while(i < listMovie.size() && exist == -1){
@@ -100,7 +119,6 @@ public class Movie {
         }
         return exist;
     }
-
 
 
 
