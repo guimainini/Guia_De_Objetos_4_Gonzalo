@@ -58,7 +58,6 @@ public class Main {
                 System.out.print("Digite el nombre de la pelicula que desea buscar : ");
                 in.nextLine();
                 title = in.nextLine();
-                title = title.toUpperCase();
                 String hi = Movie.cheackMovie(title);
                 System.out.println(hi);
                 break;
@@ -67,7 +66,6 @@ public class Main {
                     System.out.print("Digite el nombre de la pelicula que desea buscar : ");
                     in.nextLine();
                     title = in.nextLine();
-                    title = title.toUpperCase();
                     String his = Movie.cheackMovie(title);
                     System.out.println(his);
 
@@ -132,7 +130,21 @@ public class Main {
 
                 break;
             case 3:
+                in.nextLine();
+                System.out.println("Ingrese el nombre del cliente : ");
+                name = in.nextLine();
+                System.out.println("Ingrese el nombre de la pelicula : ");
+                title = in.nextLine();
+                int flag4 = Movie.posicionMovie(title);
 
+                for (Ticket e:listTicket){
+                    if(e.getAnyClient().equals(name) && e.getAnyMovie().equals(title)){
+                        System.out.println("Devuelta la peli");
+
+                        listMovie.get(flag4).setStockDiscount();
+                        listTicket.clear();
+                    }
+                }
 
 
 

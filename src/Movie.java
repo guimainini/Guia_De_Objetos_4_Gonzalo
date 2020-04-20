@@ -15,7 +15,7 @@ public class Movie {
 
 
     public Movie(String title, int releaseDate, int duration, String audience, String country, String decription, int stock) {
-        this.title = title.toUpperCase();
+        this.title = title;
         this.releaseDate = releaseDate;
         this.duration = duration;
         this.audience = audience;
@@ -55,6 +55,10 @@ public class Movie {
     public void setStockDiscount() {
         this.stock --;
     }
+    public void setStockIncrement() {
+        this.stock ++;
+    }
+
 
 
     @Override
@@ -75,10 +79,10 @@ public class Movie {
 
     static public ArrayList<Movie> crearPeli(){
 
-        Movie m1 = new Movie("Nemo",2002,120,"G","US","ANIMATED FILM",4);
-        Movie m2 = new Movie("Aladin",2006,90,"G","UK","ANIMATED FILM",2);
-        Movie m3 = new Movie("Rey Leon",2008,89,"G","AR","ANIMATED FILM",1);
-        Movie m4 = new Movie("Los increibles",2004,130,"G","US","ANIMATED FILM",6);
+        Movie m1 = new Movie("nemo",2002,120,"G","US","ANIMATED FILM",4);
+        Movie m2 = new Movie("nladin",2006,90,"G","UK","ANIMATED FILM",2);
+        Movie m3 = new Movie("rey Leon",2008,89,"G","AR","ANIMATED FILM",1);
+        Movie m4 = new Movie("los increibles",2004,130,"G","US","ANIMATED FILM",6);
 
         listMovie.add(m1);
         listMovie.add(m2);

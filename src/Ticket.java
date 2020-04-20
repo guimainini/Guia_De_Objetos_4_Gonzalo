@@ -9,11 +9,24 @@ public class Ticket {
     public Ticket(){
     }
 
-    /*public Ticket(String anyClient,String anyMovie ){
-    }*/
-
     public Ticket(String anyClient, String anyMovie) {
         this.anyClient = anyClient;
+        this.anyMovie = anyMovie;
+    }
+
+    public String getAnyClient() {
+        return anyClient;
+    }
+
+    public void setAnyClient(String anyClient) {
+        this.anyClient = anyClient;
+    }
+
+    public String getAnyMovie() {
+        return anyMovie;
+    }
+
+    public void setAnyMovie(String anyMovie) {
         this.anyMovie = anyMovie;
     }
 
