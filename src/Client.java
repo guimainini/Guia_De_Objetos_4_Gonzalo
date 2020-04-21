@@ -14,12 +14,6 @@ public class Client {
     public String getName(){
         return name;
     }
-    public String getCell() {
-        return cell;
-    }
-    public String getAddress() {
-        return address;
-    }
 
     @Override
     public String toString() {
@@ -57,6 +51,8 @@ public class Client {
 
         }
         return exist;
+
+
     }
 
 

@@ -1,27 +1,33 @@
 import java.util.ArrayList;
 
-
-
+enum Gene{
+    action, adventure, comedy, drama,horror,documentary;
+}
+enum Rate{
+    G, PG, PG_13, R, NC_17, UNRATED;
+}
 
 public class Movie {
     private String title;
     private int releaseDate;
     private int duration;
-    private String audience; //G  PG  PG-13  R NC-17  UNRATED
+    private Rate rate; //G  PG  PG-13  R NC-17  UNRATED
     private String country; // AR US UK SP
     private String decription;
     private int stock;
+    private Gene gene;
+    private int timesRent = 0;
 
-
-
-    public Movie(String title, int releaseDate, int duration, String audience, String country, String decription, int stock) {
+    public Movie(String title, int releaseDate, int duration, Rate rate,Gene gene, String country, String decription, int stock) {
         this.title = title;
         this.releaseDate = releaseDate;
         this.duration = duration;
-        this.audience = audience;
+        this.rate = rate;
+        this.gene = gene;
         this.country = country;
         this.decription = decription;
         this.stock = stock;
+
     }
 
     // metodos Get
@@ -34,9 +40,23 @@ public class Movie {
     public int getDuration() {
         return duration;
     }
-    public String getAudience() {
-        return audience;
+
+    public Rate getRate() {
+        return rate;
     }
+
+    public void setRate(Rate rate) {
+        this.rate = rate;
+    }
+
+    public Gene getGene() {
+        return gene;
+    }
+
+    public void setGene(Gene gene) {
+        this.gene = gene;
+    }
+
     public String getCountry() {
         return country;
     }
@@ -45,6 +65,14 @@ public class Movie {
     }
     public int getStock() {
         return stock;
+    }
+
+    public int getTimesRent() {
+        return timesRent;
+    }
+
+    public void setTimesRent(int timesRent) {
+        this.timesRent = timesRent;
     }
 
     //unico metodo set q voy a necesitar
@@ -60,17 +88,17 @@ public class Movie {
     }
 
 
-
     @Override
     public String toString() {
         return "Movie{" +
                 "title='" + title + '\'' +
                 ", releaseDate=" + releaseDate +
-                ", duration=" + duration + " minute"+
-                ", audience='" + audience + '\'' +
+                ", duration=" + duration +
+                ", rate=" + rate +
                 ", country='" + country + '\'' +
                 ", decription='" + decription + '\'' +
                 ", stock=" + stock +
+                ", gene=" + gene +
                 '}';
     }
 
@@ -79,10 +107,10 @@ public class Movie {
 
     static public ArrayList<Movie> crearPeli(){
 
-        Movie m1 = new Movie("nemo",2002,120,"G","US","ANIMATED FILM",4);
-        Movie m2 = new Movie("nladin",2006,90,"G","UK","ANIMATED FILM",2);
-        Movie m3 = new Movie("rey Leon",2008,89,"G","AR","ANIMATED FILM",1);
-        Movie m4 = new Movie("los increibles",2004,130,"G","US","ANIMATED FILM",6);
+        Movie m1 = new Movie("nemo",2002,120,Rate.G,Gene.action,"US","ANIMATED FILM",4);
+        Movie m2 = new Movie("nladin",2006,90,Rate.G,Gene.action,"UK","ANIMATED FILM",2);
+        Movie m3 = new Movie("rey Leon",2008,89,Rate.G,Gene.action,"AR","ANIMATED FILM",1);
+        Movie m4 = new Movie("los increibles",2004,130,Rate.G,Gene.action,"US","ANIMATED FILM",6);
 
         listMovie.add(m1);
         listMovie.add(m2);

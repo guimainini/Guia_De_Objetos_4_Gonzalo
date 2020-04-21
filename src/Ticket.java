@@ -14,6 +14,14 @@ public class Ticket {
         this.anyMovie = anyMovie;
     }
 
+    public LocalDate getRentDay() {
+        return rentDay;
+    }
+
+    public LocalDate getReturnDay() {
+        return returnDay;
+    }
+
     public String getAnyClient() {
         return anyClient;
     }

@@ -44,11 +44,11 @@ public class Main {
         System.out.println("1. Buscar pelicula si existe y si esta en stock ");
         System.out.println("2. Alquilar ");
         System.out.println("3. Devolucion ");
-        System.out.println("4.");
-        System.out.println("5.");
-        System.out.println("6.");
-        System.out.println("7.");
-        System.out.println("8. Quiere poder ver información detallada de un determinado título.");
+        System.out.println("4. Alquileres del dia");
+        System.out.println("5. Que tienen que devolver hoy");
+        System.out.println("6. Pelis del cliente");
+        System.out.println("7. La mas alquilada");
+        System.out.println("8. Ver pelis por genero");
         System.out.println("9.Exit");
         option = in.nextInt();
 
@@ -150,22 +150,29 @@ public class Main {
 
                 break;
             case 4:
-                    //alquileres del dia
+                in.nextLine();
+                System.out.println("Las pelis del dia");
+                Rent.printMoviesRentToday(Rent.listTicket);
 
                 break;
             case 5:
-                    //devolucion del dia
+                in.nextLine();
+                System.out.println("Todas la pelis de hoy");
+                Rent.printMoviesToBeReturnToday(Rent.listTicket);
                 break;
             case 6:
-                    //consulta ultimos titulos cada cliente
+                in.nextLine();
+                System.out.println("Nombre del cliente");
+                String clientLastTenMovie = in.nextLine();
+                Rent.printLastTenMoviesRentFromClient(clientLastTenMovie, Rent.listTicket);
                 break;
 
             case 7:
-
+                System.out.println(Rent.knowMostRentMovie(Rent.listMovie));
                 break;
 
             case 8:
-
+                Rent.printMoviesMostRentGene(Gene.action, Rent.listMovie);
 
                 break;
 
